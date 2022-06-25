@@ -1,7 +1,12 @@
 public class Main {
     public static void main(String[] args) {
+        task1();
+        task7();
+    }
+
+    public static void task1() {
         //Задание 1, 2
-        int clientOS = 1;
+        int clientOS = 0;
         int clientDeviceYear = 2011;
         if (clientOS == 0 && clientDeviceYear >= 2015) {
             System.out.println("Установите версию приложения для iOS по ссылке");
@@ -9,7 +14,7 @@ public class Main {
             System.out.println("Установите версию приложения для Android по ссылке");
         } else if (clientOS == 0 && clientDeviceYear <= 2015) {
             System.out.println("Установите облегченную версию приложения для iOS по ссылке");
-        } else {
+        } else if (clientOS == 1 && clientDeviceYear <= 2015) {
             System.out.println("Установите облегченную версию приложения для Android по ссылке");
         }
         //Задание 3
@@ -54,5 +59,56 @@ public class Main {
             default:
                 System.out.println("Такого месяца не существует");
         }
+        //Задание 6
+        int age = 20;
+        double salary = 60_000;
+        double limit;
+        if (age >= 23 && salary < 50_000) {
+            limit = salary * 3;
+        } else if (age >= 23 && salary >= 50_000 && salary < 80_000) {
+            limit = salary * 3 * 1.2;
+        } else if (age >= 23 && salary >= 80_000) {
+            limit = salary * 3 * 1.5;
+        } else if (age < 23 && salary < 50_000) {
+            limit = salary * 2;
+        } else if (age < 23 && salary >= 50_000 && salary < 80_000) {
+            limit = salary * 2 * 1.2;
+        } else {
+            limit = salary * 2 * 1.5;
+        }
+        System.out.println("Мы готовы выдать вам кредитную карту с лимитом " + limit + " рублей.");
+        }
+
+
+    //Задание 7
+    public static void task7() {
+        byte age = 20;
+        double salary = 50_000;
+        byte creditPeriod = 12;
+        double wantedSum = 100_000;
+        double maxPayment = salary / 2;
+        double interestRate;
+        if (age >= 30 && salary < 80_000) {
+            interestRate = 0.1;
+        } else if (age < 23 && salary < 80_000) {
+            interestRate = 0.11;
+        } else if (age >= 23 && age < 30 && salary < 80_000) {
+            interestRate = 0.105;
+        } else if (age >= 30 && salary >= 80_000) {
+            interestRate = 0.093;
+        } else if (age < 23 && salary >= 80_000) {
+            interestRate = 0.103;
+        } else {
+            interestRate = 0.1043;
+        }
+        double creditPayment = wantedSum / creditPeriod + wantedSum * 11 / creditPeriod * interestRate;
+        String result;
+        if (maxPayment >= creditPayment) {
+            result = "Одобрено.";
+        } else {
+            result = "Отказано.";
+        }
+            System.out.println("Максимальный платеж при ЗП " + salary + " равен " + maxPayment + " рублей. Платеж по кредиту " + creditPayment + " рублей. " + result);
     }
 }
+
